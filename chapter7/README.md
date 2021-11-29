@@ -39,9 +39,32 @@ The revealing constructor pattern consists of three fundamental elements:
 2. The executor that is invoked at creation time and receives a subset of the object's internal as input
 3. revealed members
 
-### Building an immutable buffer
+## Singleton
 
-Benefits:
+The purpose of the pattern is to enforce the presence of only one instance of a class and centralise its access.
 
-1. Avoid defensive copies
-2. Efficient change detection
+A few reaons of using this pattern:
+
+1. For sharing stateful information
+2. For optimizing resource usage
+3. To synchronize across to a resource
+
+Implementing singleton in Node.js is quite easy:
+
+> Simply exporting an instance from a module is already enough to obtain something very similar to the Singleton pattern
+
+```JavaScript
+// file 'dbInstance.js'
+import { Database } from './Database.js'
+export const dbInstance = new Database('my-app-db', {
+    url: 'localhost',
+    // blahblah
+})
+```
+
+The reason why the code above works is that **Node.js will cache the module, making sure not execute its code at every import**
+
+But there is a caveat. The module is cached using its full path as the lookup key, so it is only guaranteed to be a singleton within **the current package**.
+
+## Dependency Injection
+
