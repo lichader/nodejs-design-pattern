@@ -64,3 +64,9 @@ Although proxy and decorator are conceptually two different patterns with differ
 ## Adapter
 
 The addapter pattern allows us to access the functionality of an object using different interface.
+
+# Summary
+
+_proxy_ -> same interface
+_decorator_ -> extra methods to same interface
+_adapter_ -> different interface
